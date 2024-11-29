@@ -25,6 +25,7 @@ const supabaseAnonKey = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
         },
         cookies: {
           getAll() {
+            // @ts-expect-error: data?.cookies is not typed but is expected to be a Record<string, string>
             return data?.cookies
           },
         },
