@@ -7,19 +7,19 @@ import '../services/auth_notifier.dart';
 
 enum AuthAction { signIn, signUp }
 
-class EmailForm extends ConsumerStatefulWidget {
+class AuthEmailForm extends ConsumerStatefulWidget {
   final AuthAction initialAction;
 
-  const EmailForm({
+  const AuthEmailForm({
     super.key,
     this.initialAction = AuthAction.signIn,
   });
 
   @override
-  ConsumerState<EmailForm> createState() => _EmailFormState();
+  ConsumerState<AuthEmailForm> createState() => _AuthEmailFormState();
 }
 
-class _EmailFormState extends ConsumerState<EmailForm> {
+class _AuthEmailFormState extends ConsumerState<AuthEmailForm> {
   late AuthAction action;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController pwController = TextEditingController();
