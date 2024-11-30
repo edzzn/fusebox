@@ -23,7 +23,7 @@ class MyApp extends ConsumerWidget {
     final router = ref.watch(routerProvider);
 
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'Fusebox',
       debugShowCheckedModeBanner: false,
       routerConfig: router,
       theme: ThemeData(

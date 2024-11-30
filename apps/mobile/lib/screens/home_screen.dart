@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+
 import '../services/test_notifier.dart';
+import '../services/auth_notifier.dart';
 
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key, required this.title});
@@ -12,6 +14,7 @@ class HomeScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final countriesAsync = ref.watch(countriesProvider);
+    final authNotifier = ref.watch(authProvider.notifier);
 
     final onRefresh = useCallback(() {
       return ref.read(countriesProvider.notifier).refresh();
@@ -21,6 +24,9 @@ class HomeScreen extends HookConsumerWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(title),
+        actions: [
+          TextButton(onPressed: authNotifier.signOut, child: const Text("Logout")),
+        ],
       ),
       body: RefreshIndicator(
         onRefresh: onRefresh,
