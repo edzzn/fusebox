@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../components/email_form.dart';
+import '../components/auth_email_form.dart';
 
 class AuthScreen extends HookConsumerWidget {
   const AuthScreen({super.key});

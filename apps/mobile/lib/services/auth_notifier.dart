@@ -8,52 +8,50 @@ part 'auth_notifier.g.dart';
 
 @Riverpod(keepAlive: true)
 class Auth extends _$Auth {
-  final StreamController<Session?> authStateController = StreamController.broadcast();
+  final _authStateController = StreamController<Session?>.broadcast();
+  final _client = Supabase.instance.client;
 
   @override
   Stream<Session?> build() {
-    final streamSub = client.auth.onAuthStateChange.listen((authState) async {
+    final streamSub = _client.auth.onAuthStateChange.listen((authState) async {
       final session = authState.session;
-      authStateController.add(session);
+      _authStateController.add(session);
     });
 
     ref.onDispose(() {
       streamSub.cancel();
-      authStateController.close();
+      _authStateController.close();
     });
-    return authStateController.stream;
+    return _authStateController.stream;
   }
 
-  SupabaseClient get client => Supabase.instance.client;
-  Session? get currentSession => client.auth.currentSession;
-
   Future<void> signInWithPassword(String email, String password) async {
-    await client.auth.signInWithPassword(password: password, email: email);
+    await _client.auth.signInWithPassword(password: password, email: email);
   }
 
   Future<void> signInWithOAuth(OAuthProvider provider) async {
     String? baseUrl = (kIsWeb) ? Uri.base.origin : null;
-    await client.auth.signInWithOAuth(
+    await _client.auth.signInWithOAuth(
       provider,
       redirectTo: baseUrl,
     );
   }
 
   Future<void> signUp(String email, String password) async {
-    await client.auth.signUp(password: password, email: email);
+    await _client.auth.signUp(password: password, email: email);
   }
 
   Future<void> resetPassword(String email) async {
     String? baseUrl = (kIsWeb) ? Uri.base.origin : null;
     final resetUrl = baseUrl != null ? '$baseUrl/reset-password' : null;
-    await client.auth.resetPasswordForEmail(
+    await _client.auth.resetPasswordForEmail(
       email,
       redirectTo: resetUrl,
     );
   }
 
   Future<void> updatePassword(String password) async {
-    await client.auth.updateUser(
+    await _client.auth.updateUser(
       UserAttributes(
         password: password,
       ),
@@ -61,6 +59,6 @@ class Auth extends _$Auth {
   }
 
   Future<void> signOut() async {
-    await client.auth.signOut();
+    await _client.auth.signOut();
   }
 }

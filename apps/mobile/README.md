@@ -1,16 +1,29 @@
-# mobile
+# Fusebox Mobile App
 
-A new Flutter project.
+Flutter application for Fusebox.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter SDK (latest stable version)
+- Dart SDK
+- Android Studio / Xcode (for mobile development)
+- VS Code (recommended)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Environment Setup
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone the repository
+2. Copy the environment template:
+   ```bash
+   cp .env.example .env
+   ```
+3. Update the `.env` file with your Supabase credentials:
+   ```env
+   SUPABASE_URL=your_supabase_url_here
+   SUPABASE_ANON_KEY=your_supabase_anon_key_here
+   ```
+
+### Development
+
+To run the app in development mode with local environment variables:
