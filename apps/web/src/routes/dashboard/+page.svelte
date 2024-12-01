@@ -11,7 +11,7 @@
 
 	function startEditing(note: Note) {
 		editingNoteId = note.id;
-		editingNoteText = note.note;
+		editingNoteText = note.text;
 	}
 
 	function cancelEditing() {
@@ -68,7 +68,7 @@
 					<form method="POST" action="?/createNote" class="flex gap-2">
 						<input
 							type="text"
-							name="note"
+							name="text"
 							placeholder="Enter your note..."
 							class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
 						/>
@@ -109,7 +109,7 @@
 									</button>
 								</form>
 							{:else}
-								<p>{note.note}</p>
+								<p>{note.text}</p>
 								<div class="flex items-center gap-2">
 									<button
 										type="button"

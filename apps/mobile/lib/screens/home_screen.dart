@@ -154,7 +154,7 @@ class HomeScreen extends HookConsumerWidget {
                             onPressed: () async {
                               if (noteController.text.isNotEmpty) {
                                 try {
-                                  final note = NoteCreate(note: noteController.text);
+                                  final note = NoteCreate(text: noteController.text);
                                   await ref.read(notesNotifierProvider.notifier).addNote(note);
                                   noteController.clear();
                                 } catch (e) {
@@ -212,7 +212,7 @@ class HomeScreen extends HookConsumerWidget {
                                         onSubmitted: (value) async {
                                           if (value.isNotEmpty) {
                                             try {
-                                              final updatedNote = Note(id: note.id, note: value);
+                                              final updatedNote = note.copyWith(text: value);
                                               await ref.read(notesNotifierProvider.notifier).updateNote(updatedNote);
                                             } catch (e) {
                                               ScaffoldMessenger.of(context).showSnackBar(
@@ -224,7 +224,7 @@ class HomeScreen extends HookConsumerWidget {
                                           noteController.clear();
                                         },
                                       )
-                                    : Text(note.note),
+                                    : Text(note.text),
                                 trailing: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -236,7 +236,7 @@ class HomeScreen extends HookConsumerWidget {
                                           noteController.clear();
                                         } else {
                                           editingNoteId.value = note.id;
-                                          noteController.text = note.note;
+                                          noteController.text = note.text;
                                         }
                                       },
                                     ),
@@ -246,10 +246,9 @@ class HomeScreen extends HookConsumerWidget {
                                         try {
                                           await ref.read(notesNotifierProvider.notifier).deleteNote(note.id);
                                         } catch (e) {
-                                          Text('Error deleting note: $e');
-                                          // ScaffoldMessenger.of(context).showSnackBar(
-                                          //   SnackBar(content: Text('Error deleting note: $e')),
-                                          // );
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                            SnackBar(content: Text('Error deleting note: $e')),
+                                          );
                                         }
                                       },
                                     ),

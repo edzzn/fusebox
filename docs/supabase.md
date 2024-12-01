@@ -76,12 +76,24 @@ SUPABASE_URL=your-project-url
 SUPABASE_ANON_KEY=your-production-anon-key
 ```
 
+## Development
+### Create a new migration file
+```
+supabase migration new migration_name
+```
+
+Once ready to apply the migrations locally, run:
+```
+supabase db push
+```
+
+
 ## Deployment
 
 ### Database Migrations
 
 ```bash
-# Generate migration
+# Generate migration based on the state of the database
 supabase db diff -f migration_name
 
 # Apply migration

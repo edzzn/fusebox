@@ -1,17 +1,16 @@
 export type Types = {
     readonly note?:       Note;
     readonly noteCreate?: NoteCreate;
-    [property: string]: unknown;
+    [property: string]: any;
 }
 
 export type Note = {
     readonly id:   number;
-    readonly note: string;
-    [property: string]: unknown;
+    readonly text: string;
+    [property: string]: any;
 }
 
 export type NoteCreate = {
-    readonly note: string;
-    [property: string]: unknown;
-    
+    readonly text: string;
+    [property: string]: any;
 }

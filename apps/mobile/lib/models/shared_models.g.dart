@@ -21,21 +21,21 @@ Map<String, dynamic> _$$SharedModelsImplToJson(_$SharedModelsImpl instance) =>
 
 _$NoteImpl _$$NoteImplFromJson(Map<String, dynamic> json) => _$NoteImpl(
       id: (json['id'] as num).toInt(),
-      note: json['note'] as String,
+      text: json['text'] as String,
     );
 
 Map<String, dynamic> _$$NoteImplToJson(_$NoteImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'note': instance.note,
+      'text': instance.text,
     };
 
 _$NoteCreateImpl _$$NoteCreateImplFromJson(Map<String, dynamic> json) =>
     _$NoteCreateImpl(
-      note: json['note'] as String,
+      text: json['text'] as String,
     );
 
 Map<String, dynamic> _$$NoteCreateImplToJson(_$NoteCreateImpl instance) =>
     <String, dynamic>{
-      'note': instance.note,
+      'text': instance.text,
     };

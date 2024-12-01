@@ -231,8 +231,8 @@ Note _$NoteFromJson(Map<String, dynamic> json) {
 mixin _$Note {
   @JsonKey(name: "id")
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: "note")
-  String get note => throw _privateConstructorUsedError;
+  @JsonKey(name: "text")
+  String get text => throw _privateConstructorUsedError;
 
   /// Serializes this Note to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -248,7 +248,7 @@ abstract class $NoteCopyWith<$Res> {
   factory $NoteCopyWith(Note value, $Res Function(Note) then) =
       _$NoteCopyWithImpl<$Res, Note>;
   @useResult
-  $Res call({@JsonKey(name: "id") int id, @JsonKey(name: "note") String note});
+  $Res call({@JsonKey(name: "id") int id, @JsonKey(name: "text") String text});
 }
 
 /// @nodoc
@@ -267,16 +267,16 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
   @override
   $Res call({
     Object? id = null,
-    Object? note = null,
+    Object? text = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      note: null == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -289,7 +289,7 @@ abstract class _$$NoteImplCopyWith<$Res> implements $NoteCopyWith<$Res> {
       __$$NoteImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: "id") int id, @JsonKey(name: "note") String note});
+  $Res call({@JsonKey(name: "id") int id, @JsonKey(name: "text") String text});
 }
 
 /// @nodoc
@@ -305,16 +305,16 @@ class __$$NoteImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? note = null,
+    Object? text = null,
   }) {
     return _then(_$NoteImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      note: null == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -325,7 +325,7 @@ class __$$NoteImplCopyWithImpl<$Res>
 class _$NoteImpl implements _Note {
   const _$NoteImpl(
       {@JsonKey(name: "id") required this.id,
-      @JsonKey(name: "note") required this.note});
+      @JsonKey(name: "text") required this.text});
 
   factory _$NoteImpl.fromJson(Map<String, dynamic> json) =>
       _$$NoteImplFromJson(json);
@@ -334,12 +334,12 @@ class _$NoteImpl implements _Note {
   @JsonKey(name: "id")
   final int id;
   @override
-  @JsonKey(name: "note")
-  final String note;
+  @JsonKey(name: "text")
+  final String text;
 
   @override
   String toString() {
-    return 'Note(id: $id, note: $note)';
+    return 'Note(id: $id, text: $text)';
   }
 
   @override
@@ -348,12 +348,12 @@ class _$NoteImpl implements _Note {
         (other.runtimeType == runtimeType &&
             other is _$NoteImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.note, note) || other.note == note));
+            (identical(other.text, text) || other.text == text));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, note);
+  int get hashCode => Object.hash(runtimeType, id, text);
 
   /// Create a copy of Note
   /// with the given fields replaced by the non-null parameter values.
@@ -374,7 +374,7 @@ class _$NoteImpl implements _Note {
 abstract class _Note implements Note {
   const factory _Note(
       {@JsonKey(name: "id") required final int id,
-      @JsonKey(name: "note") required final String note}) = _$NoteImpl;
+      @JsonKey(name: "text") required final String text}) = _$NoteImpl;
 
   factory _Note.fromJson(Map<String, dynamic> json) = _$NoteImpl.fromJson;
 
@@ -382,8 +382,8 @@ abstract class _Note implements Note {
   @JsonKey(name: "id")
   int get id;
   @override
-  @JsonKey(name: "note")
-  String get note;
+  @JsonKey(name: "text")
+  String get text;
 
   /// Create a copy of Note
   /// with the given fields replaced by the non-null parameter values.
@@ -399,8 +399,8 @@ NoteCreate _$NoteCreateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NoteCreate {
-  @JsonKey(name: "note")
-  String get note => throw _privateConstructorUsedError;
+  @JsonKey(name: "text")
+  String get text => throw _privateConstructorUsedError;
 
   /// Serializes this NoteCreate to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -418,7 +418,7 @@ abstract class $NoteCreateCopyWith<$Res> {
           NoteCreate value, $Res Function(NoteCreate) then) =
       _$NoteCreateCopyWithImpl<$Res, NoteCreate>;
   @useResult
-  $Res call({@JsonKey(name: "note") String note});
+  $Res call({@JsonKey(name: "text") String text});
 }
 
 /// @nodoc
@@ -436,12 +436,12 @@ class _$NoteCreateCopyWithImpl<$Res, $Val extends NoteCreate>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? note = null,
+    Object? text = null,
   }) {
     return _then(_value.copyWith(
-      note: null == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -455,7 +455,7 @@ abstract class _$$NoteCreateImplCopyWith<$Res>
       __$$NoteCreateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: "note") String note});
+  $Res call({@JsonKey(name: "text") String text});
 }
 
 /// @nodoc
@@ -471,12 +471,12 @@ class __$$NoteCreateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? note = null,
+    Object? text = null,
   }) {
     return _then(_$NoteCreateImpl(
-      note: null == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -485,18 +485,18 @@ class __$$NoteCreateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$NoteCreateImpl implements _NoteCreate {
-  const _$NoteCreateImpl({@JsonKey(name: "note") required this.note});
+  const _$NoteCreateImpl({@JsonKey(name: "text") required this.text});
 
   factory _$NoteCreateImpl.fromJson(Map<String, dynamic> json) =>
       _$$NoteCreateImplFromJson(json);
 
   @override
-  @JsonKey(name: "note")
-  final String note;
+  @JsonKey(name: "text")
+  final String text;
 
   @override
   String toString() {
-    return 'NoteCreate(note: $note)';
+    return 'NoteCreate(text: $text)';
   }
 
   @override
@@ -504,12 +504,12 @@ class _$NoteCreateImpl implements _NoteCreate {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NoteCreateImpl &&
-            (identical(other.note, note) || other.note == note));
+            (identical(other.text, text) || other.text == text));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, note);
+  int get hashCode => Object.hash(runtimeType, text);
 
   /// Create a copy of NoteCreate
   /// with the given fields replaced by the non-null parameter values.
@@ -529,14 +529,14 @@ class _$NoteCreateImpl implements _NoteCreate {
 
 abstract class _NoteCreate implements NoteCreate {
   const factory _NoteCreate(
-      {@JsonKey(name: "note") required final String note}) = _$NoteCreateImpl;
+      {@JsonKey(name: "text") required final String text}) = _$NoteCreateImpl;
 
   factory _NoteCreate.fromJson(Map<String, dynamic> json) =
       _$NoteCreateImpl.fromJson;
 
   @override
-  @JsonKey(name: "note")
-  String get note;
+  @JsonKey(name: "text")
+  String get text;
 
   /// Create a copy of NoteCreate
   /// with the given fields replaced by the non-null parameter values.

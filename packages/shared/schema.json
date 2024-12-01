@@ -4,13 +4,13 @@
   "properties": {
     "note": {
       "type": "object",
-      "required": ["id", "note"],
+      "required": ["id", "text"],
       "properties": {
         "id": {
           "type": "integer",
           "format": "int64"
         },
-        "note": {
+        "text": {
           "type": "string",
           "format": "text"
         }
@@ -18,9 +18,9 @@
     },
     "noteCreate": {
       "type": "object",
-      "required": ["note"],
+      "required": ["text"],
       "properties": {
-        "note": {
+        "text": {
           "type": "string",
           "format": "text"
         }
