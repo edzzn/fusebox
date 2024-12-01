@@ -2,6 +2,7 @@ import type { EmailOtpType } from '@supabase/supabase-js'
 import { redirect } from '@sveltejs/kit'
 
 import type { RequestHandler } from './$types'
+import posthog from 'posthog-js'
 
 export const GET: RequestHandler = async ({ url, locals: { supabase } }) => {
   const token_hash = url.searchParams.get('token_hash')
@@ -20,6 +21,10 @@ export const GET: RequestHandler = async ({ url, locals: { supabase } }) => {
 
   if (token_hash && type) {
     const { error } = await supabase.auth.verifyOtp({ type, token_hash })
+
+    const userId = (await supabase.auth.getUser()).data.user?.id ?? 'anonymous';
+    posthog.capture('email_verified', { distinctId: userId });
+
     if (!error) {
       redirectTo.searchParams.delete('next')
       redirect(303, redirectTo)

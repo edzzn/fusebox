@@ -41,6 +41,8 @@
 		"@supabase/supabase-js": "^2.46.2",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/forms": "^0.5.9",
-		"@tailwindcss/typography": "^0.5.15"
+		"@tailwindcss/typography": "^0.5.15",
+		"posthog-js": "^1.194.1",
+		"posthog-node": "^4.3.1"
 	}
 }

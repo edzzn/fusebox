@@ -22,6 +22,7 @@
     "editor.defaultFormatter": "denoland.vscode-deno"
   },
   "cSpell.words": [
+    "posthog",
     "supabase"
   ]
 }
