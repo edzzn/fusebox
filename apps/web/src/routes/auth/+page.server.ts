@@ -5,7 +5,7 @@ import { env } from '$env/dynamic/private'
 
 const posthog = new PostHog(
   env.VITE_PUBLIC_POSTHOG_PROJECT_API_KEY,
-  { host: env.VITE_PUBLIC_POSTHOG_HOST }
+  { host: env.VITE_PUBLIC_POSTHOG_API_HOST }
 )
 
 export const actions: Actions = {
