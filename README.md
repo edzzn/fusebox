@@ -23,7 +23,7 @@ Fusebox is a modern, full-stack application providing secure authentication and 
 - [API Documentation](docs/supabase.md)
 
 ## Core Features
-- [ ] Shared Types (Flutter/TypeScript)
+- [X] Shared Types (Flutter/TypeScript)
 - [ ] Authentication & User Management
 - [ ] Real-time Sync
 - [ ] Stripe Payments
@@ -31,24 +31,25 @@ Fusebox is a modern, full-stack application providing secure authentication and 
 - [ ] Email System (Postmark)
 
 ## Web (SvelteKit)
-- [ ] Auth Flow
-- [ ] Dashboard UI
+- [X] Auth Flow
+- [X] Dashboard UI
 - [ ] Payment Integration
 - [ ] Analytics Setup
 - [ ] Testing
 
 ## Mobile (Flutter)
-- [ ] State Management (Riverpod)
-- [ ] Navigation (go_router)
+- [X] State Management (Riverpod)
+- [X] Navigation (go_router)
+- [X] Authentication (Supabase Auth)
 - [ ] Offline Mode
 - [ ] UI Components
 - [ ] Testing
 
 ## Backend (Supabase)
-- [ ] Schema Design
-- [ ] Row Level Security
+- [X] Schema Design
+- [X] Row Level Security
 - [ ] Edge Functions
-- [ ] Local Dev Setup
+- [X] Local Dev Setup
 - [ ] Integration Tests
 
 ## DevOps
@@ -58,7 +59,7 @@ Fusebox is a modern, full-stack application providing secure authentication and 
 - [ ] Release Management
 
 ## Documentation
-- [ ] Setup Guide
-- [ ] Architecture Overview
+- [X] Setup Guide
+- [X] Architecture Overview
 - [ ] API Reference
 - [ ] Contributing Guide
