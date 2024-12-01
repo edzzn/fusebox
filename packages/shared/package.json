@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "generate:mobile": "quicktype --src-lang schema schema.json --lang dart  --null-safety --use-freezed --use-json-annotation --required-props --final-props --no-coders-in-class -o ../../apps/mobile/lib/models/shared_models.dart",
     "generate:web": "quicktype --src-lang schema schema.json --lang typescript --just-types --no-runtime-typecheck --prefer-types --readonly --nice-property-names -o ../../apps/web/src/lib/types.ts",
