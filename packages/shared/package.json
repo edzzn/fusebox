@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate:mobile": "quicktype --src-lang schema schema.json --lang dart  --null-safety --use-freezed --use-json-annotation --required-props --final-props --no-coders-in-class -o ../../apps/mobile/lib/models/shared_models.dart",
+    "generate:web": "quicktype --src-lang schema schema.json --lang typescript --just-types --no-runtime-typecheck --prefer-types --readonly --nice-property-names -o ../../apps/web/src/lib/types.ts",
+    "generate": "npm run generate:web && npm run generate:mobile"
   },
   "keywords": [],
   "author": "",

@@ -6,7 +6,7 @@ part of 'notes_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$notesNotifierHash() => r'5700a2ccdd03bb3e13299bab4792bb5585173fb9';
+String _$notesNotifierHash() => r'1565ac68ccaecdd1a4b9983e592956da40e1cc15';
 
 /// See also [NotesNotifier].
 @ProviderFor(NotesNotifier)

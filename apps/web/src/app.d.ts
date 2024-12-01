@@ -9,9 +9,7 @@ declare global {
       session: Session | null
       user: User | null
     }
-    interface PageData {
-      session: Session | null
-    }
+    // interface PageData {}
     // interface PageState {}
     // interface Platform {}
   }

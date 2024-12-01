@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "note": {
+      "type": "object",
+      "required": ["id", "note"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "note": {
+          "type": "string",
+          "format": "text"
+        }
+      }
+    },
+    "noteCreate": {
+      "type": "object",
+      "required": ["note"],
+      "properties": {
+        "note": {
+          "type": "string",
+          "format": "text"
+        }
+      }
+    }
+  }
+}

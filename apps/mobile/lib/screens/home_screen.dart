@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 
+import '../models/models.dart';
 import '../services/auth_notifier.dart';
 import '../services/notes_notifier.dart';
 
@@ -30,7 +31,7 @@ class HomeScreen extends HookConsumerWidget {
     final notesAsync = ref.watch(notesNotifierProvider);
     final authNotifier = ref.watch(authProvider.notifier);
     final noteController = useTextEditingController();
-    final editingNoteId = useState<String?>(null);
+    final editingNoteId = useState<int?>(null);
 
     final stats = [
       StatsCard(
@@ -153,7 +154,8 @@ class HomeScreen extends HookConsumerWidget {
                             onPressed: () async {
                               if (noteController.text.isNotEmpty) {
                                 try {
-                                  await ref.read(notesNotifierProvider.notifier).addNote(noteController.text);
+                                  final note = NoteCreate(note: noteController.text);
+                                  await ref.read(notesNotifierProvider.notifier).addNote(note);
                                   noteController.clear();
                                 } catch (e) {
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -201,7 +203,7 @@ class HomeScreen extends HookConsumerWidget {
                               margin: const EdgeInsets.only(bottom: 8),
                               child: ListTile(
                                 onTap: () {
-                                  context.goNamed('details', pathParameters: {'id': note.id});
+                                  context.goNamed('details', pathParameters: {'id': note.id.toString()});
                                 },
                                 title: editingNoteId.value == note.id
                                     ? TextField(
@@ -210,7 +212,8 @@ class HomeScreen extends HookConsumerWidget {
                                         onSubmitted: (value) async {
                                           if (value.isNotEmpty) {
                                             try {
-                                              await ref.read(notesNotifierProvider.notifier).updateNote(note.id, value);
+                                              final updatedNote = Note(id: note.id, note: value);
+                                              await ref.read(notesNotifierProvider.notifier).updateNote(updatedNote);
                                             } catch (e) {
                                               ScaffoldMessenger.of(context).showSnackBar(
                                                 SnackBar(content: Text('Error updating note: $e')),
@@ -221,7 +224,7 @@ class HomeScreen extends HookConsumerWidget {
                                           noteController.clear();
                                         },
                                       )
-                                    : Text(note.text),
+                                    : Text(note.note),
                                 trailing: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -233,7 +236,7 @@ class HomeScreen extends HookConsumerWidget {
                                           noteController.clear();
                                         } else {
                                           editingNoteId.value = note.id;
-                                          noteController.text = note.text;
+                                          noteController.text = note.note;
                                         }
                                       },
                                     ),
@@ -243,9 +246,10 @@ class HomeScreen extends HookConsumerWidget {
                                         try {
                                           await ref.read(notesNotifierProvider.notifier).deleteNote(note.id);
                                         } catch (e) {
-                                          ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(content: Text('Error deleting note: $e')),
-                                          );
+                                          Text('Error deleting note: $e');
+                                          // ScaffoldMessenger.of(context).showSnackBar(
+                                          //   SnackBar(content: Text('Error deleting note: $e')),
+                                          // );
                                         }
                                       },
                                     ),

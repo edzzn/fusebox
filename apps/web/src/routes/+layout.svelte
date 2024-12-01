@@ -20,20 +20,3 @@
 </script>
 
 <slot />	
-
-<!-- <div class="min-h-screen flex flex-col">
-	<LandingNavbar session={session} />
-
-
-	<main class="flex-grow">
-		<slot />
-	</main>
-
-	<LandingFooter />
-</div>
-
-<style>
-	:global(html) {
-		scroll-behavior: smooth;
-	}
-</style> -->

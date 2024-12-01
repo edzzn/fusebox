@@ -1,29 +1,21 @@
 import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
+import type { Note } from '$lib/types';
 
-export const load: PageServerLoad = async ({ depends, locals: { session, supabase } }) => {
+
+
+export const load: PageServerLoad= async ({ depends, locals: {  supabase } }) => {
 	depends('supabase:db:notes');
-	const { data: notes } = await supabase.from('notes').select('id,note').order('id');
+	const { data: notes } = await supabase.from('notes').select().order('created_at', { ascending: false });
 
-	return {
-		session,
-		notes: notes ?? [],
-		stats: {
-			totalProjects: 12,
-			activeTasks: 24,
-			completionRate: '98.5%'
-		},
-		recentActivity: [
-			// ... fetch real activity data
-		],
-		upcomingDeadlines: [
-			// ... fetch real deadlines
-		]
+	return { 
+		notes: (notes ?? []) as Note[],
 	};
 };
 
+
 export const actions: Actions = {
-	createNote: async ({ request, locals: { supabase } }) => {
+	createNote: async ({ request, locals: { supabase } })=>{
 		const formData = await request.formData();
 		const note = formData.get('note')?.toString();
 
@@ -53,7 +45,6 @@ export const actions: Actions = {
 			.from('notes')
 			.update({ note })
 			.eq('id', id);
-
 		if (error) {
 			return fail(500, { error: 'Failed to update note' });
 		}
@@ -64,15 +55,13 @@ export const actions: Actions = {
 	deleteNote: async ({ request, locals: { supabase } }) => {
 		const formData = await request.formData();
 		const id = formData.get('id')?.toString();
-
 		if (!id) {
 			return fail(400, { error: 'Note ID is required' });
 		}
 
 		const { error } = await supabase.from('notes').delete().eq('id', id);
-
 		if (error) {
-			return fail(500, { error: 'Failed to delete note' });
+			return { error: 'Failed to delete note' };
 		}
 
 		return { success: true };
