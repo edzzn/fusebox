@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:posthog_flutter/posthog_flutter.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -16,6 +17,16 @@ class Auth extends _$Auth {
     final streamSub = _client.auth.onAuthStateChange.listen((authState) async {
       final session = authState.session;
       _authStateController.add(session);
+
+      // capture posthog event
+      if (session != null) {
+        await Posthog().identify(
+          userId: session.user.id,
+          userProperties: {'email': session.user.email ?? ''},
+        );
+      } else {
+        await Posthog().reset();
+      }
     });
 
     ref.onDispose(() {

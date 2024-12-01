@@ -28,5 +28,15 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+
+	<!-- Posthog -->
+  <key>com.posthog.posthog.API_KEY</key>
+  <string>phc_OK0gGltq5yL2XBWWSyCWtF8wGQISuSl20swJLJjWxgG</string>
+  <key>com.posthog.posthog.POSTHOG_HOST</key>
+  <string>https://us.i.posthog.com</string>
+  <key>com.posthog.posthog.CAPTURE_APPLICATION_LIFECYCLE_EVENTS</key>
+  <true/>
+  <key>com.posthog.posthog.DEBUG</key>
+  <true/>
 </dict>
 </plist>

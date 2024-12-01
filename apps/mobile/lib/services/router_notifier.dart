@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:posthog_flutter/posthog_flutter.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../screens/details_screen.dart';
@@ -21,6 +22,9 @@ GoRouter router(Ref ref) {
   return GoRouter(
     navigatorKey: navigatorKey,
     initialLocation: initUrl?.path,
+    observers: [
+      PosthogObserver(),
+    ],
     redirect: (context, state) {
       // Handle loading state first
       if (authState.isLoading) {

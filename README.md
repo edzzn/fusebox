@@ -24,10 +24,10 @@ Fusebox is a modern, full-stack application providing secure authentication and 
 
 ## Core Features
 - [X] Shared Types (Flutter/TypeScript)
-- [ ] Authentication & User Management
+- [X] Authentication & User Management
 - [ ] Real-time Sync
 - [ ] Stripe Payments
-- [ ] Analytics (PostHog)
+- [X] Analytics (PostHog)
 - [ ] Email System (Postmark)
 
 ## Web (SvelteKit)
