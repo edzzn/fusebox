@@ -17,13 +17,13 @@ export const load: PageServerLoad= async ({ depends, locals: {  supabase } }) =>
 export const actions: Actions = {
 	createNote: async ({ request, locals: { supabase } })=>{
 		const formData = await request.formData();
-		const note = formData.get('text')?.toString();
+		const text = formData.get('text')?.toString();
 
-		if (!note) {
+		if (!text) {
 			return fail(400, { error: 'Note text is required' });
 		}
 
-		const { error } = await supabase.from('notes').insert({ note });
+		const { error } = await supabase.from('notes').insert({ text });
 
 		if (error) {
 			return fail(500, { error: 'Failed to create note' });
@@ -35,15 +35,15 @@ export const actions: Actions = {
 	updateNote: async ({ request, locals: { supabase } }) => {
 		const formData = await request.formData();
 		const id = formData.get('id')?.toString();
-		const note = formData.get('text')?.toString();
+		const text = formData.get('text')?.toString();
 
-		if (!id || !note) {
+		if (!id || !text) {
 			return fail(400, { error: 'Note ID and text are required' });
 		}
 
 		const { error } = await supabase
 			.from('notes')
-			.update({ note })
+			.update({ text })
 			.eq('id', id);
 		if (error) {
 			return fail(500, { error: 'Failed to update note' });
